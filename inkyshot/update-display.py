@@ -61,11 +61,14 @@ if "FONT_SIZE" in os.environ:
 
 # Use a dashboard defined message if we have one, otherwise load a nice quote
 if "INKY_MESSAGE" in os.environ:
-   message = os.environ['INKY_MESSAGE']
+    message = os.environ['INKY_MESSAGE']
 
-   if message == "":
-       # If the message var was set but blank, use the device name
-       message = os.environ['DEVICE_NAME']
+    if message == "":
+        # If the message var was set but blank, use the device name
+        message = os.environ['DEVICE_NAME']
+
+    if message == "":
+        sys.exit(0)
 else:
     req = urllib.request.Request("https://quotes.rest/qod?language=en", headers={"Accept" : "application/json"})
     try:
