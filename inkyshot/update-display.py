@@ -134,7 +134,8 @@ draw.multiline_text((x, y), output_text, BLACK, font, align="center", spacing=0)
 
 # Rotate and display the image
 if "ROTATE" in os.environ:
-    img = img.rotate(180)
+    if os.environ['ROTATE'] == "1":
+        img = img.rotate(180)
 
 if "WAVESHARE" in os.environ:
     # epd does not have a set_image method.
